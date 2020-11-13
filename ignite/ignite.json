@@ -1,0 +1,17 @@
+{
+  "createdWith": "3.5.3",
+  "examples": "classic",
+  "navigation": "react-navigation",
+  "askToOverride": true,
+  "generators": {
+    "component": "ignite-native-base-boilerplate",
+    "container": "ignite-native-base-boilerplate",
+    "list": "ignite-native-base-boilerplate",
+    "listview": "ignite-native-base-boilerplate",
+    "redux": "ignite-native-base-boilerplate",
+    "saga": "ignite-native-base-boilerplate",
+    "screen": "ignite-native-base-boilerplate"
+  },
+  "boilerplate": "ignite-native-base-boilerplate",
+  "boilerplateVersion": "2.0.0"
+}

@@ -1,4 +1,7 @@
 {
-  "name": "RecipeApp",
-  "displayName": "RecipeApp"
+  "name": "MyRecipeTest",
+  "displayName": "MyRecipeTest",
+  "expo": {
+    "name": "MyRecipeTest"
+  }
 }

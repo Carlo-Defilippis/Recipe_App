@@ -158,5 +158,3 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
-
-*.lock

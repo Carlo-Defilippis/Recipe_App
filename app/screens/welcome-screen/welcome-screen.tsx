@@ -98,8 +98,15 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <Text style={CONTENT}>
           Add your ingredients here:
         </Text>
-        <TextInput style={INPUT}/>
-          <Button
+        <TextInput 
+          style={INPUT}
+          keyboardType='default'
+          placeholder={'e.g. lemon'}
+          onChangeText={(val) => setIngredient(val)}/>
+        <Text style={CONTENT}>
+          Ingredients: {ingredient}
+        </Text>
+        <Button
             style={CONTINUE}
             textStyle={CONTINUE_TEXT}
             tx="welcomeScreen.search"

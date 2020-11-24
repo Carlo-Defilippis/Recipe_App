@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing, typography } from "../../theme"
-const bowserLogo = require("./bowser.png")
+const ccLogo = require('./ccLogo50.png')
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
@@ -53,7 +53,11 @@ const BOWSER: ImageStyle = {
 }
 const CONTENT: TextStyle = {
   ...TEXT,
+<<<<<<< HEAD
   color: "#BAB6C8",
+=======
+  color: "#FFFFFF",
+>>>>>>> fb57fb106079b4163585b90a8fd48a66a94a0bef
   fontSize: 15,
   lineHeight: 22,
   marginBottom: spacing[5],
@@ -87,8 +91,14 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <Text style={TITLE_WRAPPER}>
           <Text style={TITLE} text="Cuppoard Cleanout!" />
         </Text>
+<<<<<<< HEAD
         <Text style={TITLE} preset="header" tx="welcomeScreen.readyForLaunch" />
         <Image source={bowserLogo} style={BOWSER} />
+=======
+        <Image source={ccLogo} style={BOWSER} />
+        <Text style={TITLE} text="Let's get cooking!" />
+
+>>>>>>> fb57fb106079b4163585b90a8fd48a66a94a0bef
         <Text style={CONTENT}>
           This probably isn't what your app is going to look like. Unless your designer handed you
           this screen and, in that case, congrats! You're ready to ship.

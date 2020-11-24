@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing, typography } from "../../theme"
-const bowserLogo = require("./bowser.png")
+const ccLogo = require('./ccLogo50.png')
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
@@ -48,7 +48,7 @@ const BOWSER: ImageStyle = {
 }
 const CONTENT: TextStyle = {
   ...TEXT,
-  color: "FFFFFF",
+  color: "#FFFFFF",
   fontSize: 15,
   lineHeight: 22,
   marginBottom: spacing[5],
@@ -82,7 +82,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <Text style={TITLE_WRAPPER}>
           <Text style={TITLE} text="Cupboard Cleanout" />
         </Text>
-        <Image source={bowserLogo} style={BOWSER} />
+        <Image source={ccLogo} style={BOWSER} />
         <Text style={TITLE} text="Let's get cooking!" />
 
         <Text style={CONTENT}>

@@ -100,7 +100,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         </Text>
         <TextInput 
           style={INPUT}
-          keyboardType='default'
+          keyboardType={'default'}
           placeholder={'e.g. lemon'}
           onChangeText={(val) => setIngredient(val)}/>
         <Text style={CONTENT}>

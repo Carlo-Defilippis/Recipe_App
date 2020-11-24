@@ -40,12 +40,7 @@ const TITLE: TextStyle = {
   lineHeight: 38,
   textAlign: "center",
 }
-const ALMOST: TextStyle = {
-  ...TEXT,
-  ...BOLD,
-  fontSize: 26,
-  fontStyle: "italic",
-}
+
 const BOWSER: ImageStyle = {
   alignSelf: "center",
   marginVertical: spacing[5],
@@ -53,7 +48,7 @@ const BOWSER: ImageStyle = {
 }
 const CONTENT: TextStyle = {
   ...TEXT,
-  color: "#BAB6C8",
+  color: "FFFFFF",
   fontSize: 15,
   lineHeight: 22,
   marginBottom: spacing[5],
@@ -61,7 +56,7 @@ const CONTENT: TextStyle = {
 const CONTINUE: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
-  backgroundColor: "#5D2555",
+  backgroundColor: "#062a78",
 }
 const CONTINUE_TEXT: TextStyle = {
   ...TEXT,
@@ -69,7 +64,7 @@ const CONTINUE_TEXT: TextStyle = {
   fontSize: 13,
   letterSpacing: 2,
 }
-const FOOTER: ViewStyle = { backgroundColor: "#20162D" }
+const FOOTER: ViewStyle = {  }
 const FOOTER_CONTENT: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
@@ -83,21 +78,15 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
     <View style={FULL}>
       <Wallpaper />
       <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
-        <Header headerTx="welcomeScreen.poweredBy" style={HEADER} titleStyle={HEADER_TITLE} />
+        <Header headerTx="" style={HEADER} titleStyle={HEADER_TITLE} />
         <Text style={TITLE_WRAPPER}>
-          <Text style={TITLE} text="Your new app, " />
-          <Text style={ALMOST} text="almost" />
-          <Text style={TITLE} text="!" />
+          <Text style={TITLE} text="Cupboard Cleanout" />
         </Text>
-        <Text style={TITLE} preset="header" tx="welcomeScreen.readyForLaunch" />
         <Image source={bowserLogo} style={BOWSER} />
+        <Text style={TITLE} text="Let's get cooking!" />
+
         <Text style={CONTENT}>
-          This probably isn't what your app is going to look like. Unless your designer handed you
-          this screen and, in that case, congrats! You're ready to ship.
-        </Text>
-        <Text style={CONTENT}>
-          For everyone else, this is where you'll see a live preview of your fully functioning app
-          using Ignite.
+          List your ingredients below, and we'll find the perfect recipe for you!
         </Text>
       </Screen>
       <SafeAreaView style={FOOTER}>

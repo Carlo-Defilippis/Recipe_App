@@ -35,7 +35,7 @@ Simply input your ingredients on the homepage of the app and a list of recipes w
 
 ## INSTALLATION
 
-Download Cupboard Cleanout from store.  Available for ios and droid devices.
+Download Cupboard Cleanout from store.  Available for ios and android devices.
 
 ## QUESTIONS
 If you have any questions about this repository, please feel free to reach out to any of the team members (listed below). 

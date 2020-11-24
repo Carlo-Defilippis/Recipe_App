@@ -1,5 +1,5 @@
-import React from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView } from "react-native"
+import React, { useState } from "react"
+import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, TextInput } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
@@ -40,12 +40,7 @@ const TITLE: TextStyle = {
   lineHeight: 38,
   textAlign: "center",
 }
-const ALMOST: TextStyle = {
-  ...TEXT,
-  ...BOLD,
-  fontSize: 26,
-  fontStyle: "italic",
-}
+
 const BOWSER: ImageStyle = {
   alignSelf: "center",
   marginVertical: spacing[5],
@@ -70,15 +65,25 @@ const CONTINUE_TEXT: TextStyle = {
   fontSize: 13,
   letterSpacing: 2,
 }
-const FOOTER: ViewStyle = { backgroundColor: "#007FFF" }
+const FOOTER: ViewStyle = { }
 const FOOTER_CONTENT: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
+}
+const INPUT: ViewStyle = {
+  borderWidth: 2,
+  alignItems: "center",
+  padding: 8,
+  margin: 10,
+  flex: 1,
+  justifyContent: "center",
+  backgroundColor: "#FFF"
 }
 
 export const WelcomeScreen = observer(function WelcomeScreen() {
   const navigation = useNavigation()
   const nextScreen = () => navigation.navigate("mealResult")
+  const [ingredient, setIngredient] = useState('');
 
   return (
     <View style={FULL}>
@@ -90,22 +95,26 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         </Text>
         <Image source={ccLogo} style={BOWSER} />
         <Text style={TITLE} text="Let's get cooking!" />
-
         <Text style={CONTENT}>
-          Search Box Here. Search DropDown Here.
+          Add your ingredients here:
         </Text>
+        <TextInput 
+          style={INPUT}
+          keyboardType='default'
+          placeholder={'e.g. lemon'}
+          onChangeText={(val) => setIngredient(val)}/>
         <Text style={CONTENT}>
-          Search Button Here.
+          Ingredients: {ingredient}
         </Text>
-      </Screen>
-      <SafeAreaView style={FOOTER}>
-        <View style={FOOTER_CONTENT}>
-          <Button
+        <Button
             style={CONTINUE}
             textStyle={CONTINUE_TEXT}
             tx="welcomeScreen.search"
             onPress={nextScreen}
           />
+      </Screen>
+      <SafeAreaView style={FOOTER}>
+        <View style={FOOTER_CONTENT}>
         </View>
       </SafeAreaView>
     </View>

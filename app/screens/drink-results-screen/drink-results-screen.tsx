@@ -11,7 +11,7 @@ const ROOT: ViewStyle = {
   flex: 1,
 }
 
-export const FirstNewScreen = observer(function FirstNewScreen() {
+export const DrinkResultsScreen = observer(function DrinkResultsScreen() {
   // Pull in one of our MST stores
   // const { someStore, anotherStore } = useStores()
   // OR
@@ -21,7 +21,7 @@ export const FirstNewScreen = observer(function FirstNewScreen() {
   // const navigation = useNavigation()
   return (
     <Screen style={ROOT} preset="scroll">
-      <Text preset="header" text="firstNewScreen" />
+      <Text preset="header" text="drinkResultsScreen" />
     </Screen>
   )
 })

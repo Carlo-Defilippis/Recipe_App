@@ -53,11 +53,7 @@ const BOWSER: ImageStyle = {
 }
 const CONTENT: TextStyle = {
   ...TEXT,
-<<<<<<< HEAD
-  color: "#BAB6C8",
-=======
   color: "#FFFFFF",
->>>>>>> fb57fb106079b4163585b90a8fd48a66a94a0bef
   fontSize: 15,
   lineHeight: 22,
   marginBottom: spacing[5],
@@ -81,7 +77,7 @@ const FOOTER_CONTENT: ViewStyle = {
 
 export const WelcomeScreen = observer(function WelcomeScreen() {
   const navigation = useNavigation()
-  const nextScreen = () => navigation.navigate("demo")
+  const nextScreen = () => navigation.navigate("mealResult")
 
   return (
     <View style={FULL}>
@@ -91,14 +87,9 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <Text style={TITLE_WRAPPER}>
           <Text style={TITLE} text="Cuppoard Cleanout!" />
         </Text>
-<<<<<<< HEAD
-        <Text style={TITLE} preset="header" tx="welcomeScreen.readyForLaunch" />
-        <Image source={bowserLogo} style={BOWSER} />
-=======
         <Image source={ccLogo} style={BOWSER} />
         <Text style={TITLE} text="Let's get cooking!" />
 
->>>>>>> fb57fb106079b4163585b90a8fd48a66a94a0bef
         <Text style={CONTENT}>
           This probably isn't what your app is going to look like. Unless your designer handed you
           this screen and, in that case, congrats! You're ready to ship.

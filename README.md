@@ -39,7 +39,7 @@ Download Cupboard Cleanout from store.  Available for ios and android devices.
 
 ## QUESTIONS
 If you have any questions about this repository, please feel free to reach out to any of the team members (listed below). 
-
+ 
 ## CONTRIBUTIONS
 If you would like to suggest features or changes, please fork this repo and open a pull request with comments on what you are suggesting. Thanks! 
 

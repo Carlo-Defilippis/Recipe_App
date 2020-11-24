@@ -64,11 +64,11 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
   // Pull in navigation via hook
   // const navigation = useNavigation()
     const mealResultsAPI = new Api()
-    mealResultsAPI.setup()
-    mealResultsAPI.getUser("10")
+    const myResults = mealResultsAPI.setup()
+    // mealResultsAPI.getUser("10")
     const navigation = useNavigation()
     const welcomeScreen = () => navigation.navigate("welcome")
-
+    console.log(mealResultsAPI.getUser("10"))
   return (
     <View style={FULL}>
     <Wallpaper />

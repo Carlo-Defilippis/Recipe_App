@@ -49,7 +49,7 @@ export class Api {
    */
   async getUsers(): Promise<Types.GetUsersResult> {
     // make the api call
-    const response: ApiResponse<any> = await this.apisauce.get(`/users`)
+    const response: ApiResponse<any> = await this.apisauce.get(``)
 
     // the typical ways to die when calling an api
     if (!response.ok) {
@@ -59,8 +59,8 @@ export class Api {
 
     const convertUser = raw => {
       return {
-        id: raw.id,
-        name: raw.name,
+        id: raw.id.value,
+        name: raw.name.first,
       }
     }
 

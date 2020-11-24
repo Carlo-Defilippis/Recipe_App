@@ -4,7 +4,7 @@
 <br>
 
 <h1 align="center">Cupboard Cleanout <br>
-<img align="center" src="app/screens/welcome-screen/cclogo50.png"/></h1>
+<img align="center" src="app/screens/welcome-screen/ccLogo50.png"/></h1>
 
 <br>
 

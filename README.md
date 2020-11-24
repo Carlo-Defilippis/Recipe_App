@@ -3,8 +3,8 @@
 <br>
 <br>
 
-<h1 align="center">Cupboard Cleanout
-<img src="client/public/assets/images/logo100x100.png" align="center"/></h1>
+<h1 align="center">Cupboard Cleanout <br>
+<img align="center" src="app/screens/welcome-screen/cclogo50.png"/></h1>
 
 <br>
 
@@ -24,10 +24,7 @@
 
 It is easy to let our food go to waste, especially with the scraps of food leftover from a week of cooking.  What are you supposed to do with the 1/2 an onion in the back of the fridge, or the jar of tomato sauce that is about to expire in the pantry.  With Cupboard Cleanout users never have to worry about throwing out groceries again.
 
-Simply input your ingredients on the homepage of the app and a list of recipes will be curated immediately.
-
-
-<img src="client/public/assets/images/Refresh App screenshot.png" align="center"/>
+Simply input your ingredients on the homepage of the app and a list of recipes will be curated immediately.  Not hungry?  Try searching for a new cocktail recipe instead!
 
 ## TECHNOLOGIES
 
@@ -53,7 +50,10 @@ If you would like to suggest features or changes, please fork this repo and open
 ## LINKS
 
 ** App is still in development, links will be provided when app is published on app store **
- 
+
+<br>
+<br>
+Developer Notes:
 
 1) Install the Reactotron Debug app using "brew cask install reactotron" in the command line
 
@@ -66,5 +66,3 @@ For Windows 10 - Run "react-native run-android" with an android phone connected 
 
 optional - 
 In the metro window popup press 'd' to open the developer menu on the phone 
-
-Mobile App

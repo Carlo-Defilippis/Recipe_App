@@ -24,6 +24,8 @@ import { WelcomeScreen, DemoScreen, MealResultsScreen, DrinkResultsScreen } from
 export type PrimaryParamList = {
   welcome: undefined
   demo: undefined
+  mealResult: undefined
+  drinkResult: undefined
 }
 
 // Documentation: https://github.com/software-mansion/react-native-screens/tree/master/native-stack

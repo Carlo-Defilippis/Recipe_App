@@ -10,7 +10,9 @@
   "welcomeScreen": {
     "poweredBy": "POWERED BY BOWSER",
     "readyForLaunch": "Ready for launch.",
-    "continue": "CONTINUE"
+    "continue": "CONTINUE",
+    "goBack": "GO BACK",
+    "search": "SEARCH"
   },
   "demoScreen": {
     "howTo": "HOW TO",

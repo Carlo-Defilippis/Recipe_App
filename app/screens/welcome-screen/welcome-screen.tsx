@@ -56,6 +56,7 @@ const CONTENT: TextStyle = {
   color: "#FFFFFF",
   fontSize: 15,
   lineHeight: 22,
+  textAlign: "center",
   marginBottom: spacing[5],
 }
 const CONTINUE: ViewStyle = {
@@ -83,7 +84,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
     <View style={FULL}>
       <Wallpaper />
       <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
-        <Header headerTx="welcomeScreen.poweredBy" style={HEADER} titleStyle={HEADER_TITLE} />
+        <Header headerTx="" style={HEADER} titleStyle={HEADER_TITLE} />
         <Text style={TITLE_WRAPPER}>
           <Text style={TITLE} text="Cuppoard Cleanout!" />
         </Text>
@@ -91,12 +92,10 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <Text style={TITLE} text="Let's get cooking!" />
 
         <Text style={CONTENT}>
-          This probably isn't what your app is going to look like. Unless your designer handed you
-          this screen and, in that case, congrats! You're ready to ship.
+          Search Box Here. Search DropDown Here.
         </Text>
         <Text style={CONTENT}>
-          For everyone else, this is where you'll see a live preview of your fully functioning app
-          using Ignite.
+          Search Button Here.
         </Text>
       </Screen>
       <SafeAreaView style={FOOTER}>
@@ -104,7 +103,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
           <Button
             style={CONTINUE}
             textStyle={CONTINUE_TEXT}
-            tx="welcomeScreen.continue"
+            tx="welcomeScreen.search"
             onPress={nextScreen}
           />
         </View>

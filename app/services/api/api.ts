@@ -80,8 +80,10 @@ export class Api {
 
   async getUser(id: string): Promise<Types.GetUserResult> {
     // make the api call
-    const response: ApiResponse<any> = await this.apisauce.get(`/users/${id}`)
+    const response: ApiResponse<any> = await this.apisauce.get(``)
 
+    // Can add to end of url with /users/${id} inside the apisauce.get, must be in quotes
+    
     // the typical ways to die when calling an api
     if (!response.ok) {
       const problem = getGeneralApiProblem(response)

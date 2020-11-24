@@ -1,3 +1,9 @@
+# About
+
+Cupboard Cleanout is a React-Native app that curates recipes based on the users ingredients, allergies, and diet restrictions.  Utilizes the Ignite Bowser CLI and React-Native among many other utilities. 
+
+* Still in Development for iPhone & Android with future plans for a website*
+
 # Recipe_App
 
 1) Install the Reactotron Debug app using "brew cask install reactotron" in the command line

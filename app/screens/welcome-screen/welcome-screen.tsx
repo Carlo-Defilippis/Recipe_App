@@ -57,6 +57,7 @@ const CONTINUE: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
   backgroundColor: "#062a78",
+
 }
 const CONTINUE_TEXT: TextStyle = {
   ...TEXT,
@@ -64,6 +65,7 @@ const CONTINUE_TEXT: TextStyle = {
   fontSize: 13,
   letterSpacing: 2,
 }
+
 const FOOTER: ViewStyle = {  }
 const FOOTER_CONTENT: ViewStyle = {
   paddingVertical: spacing[4],

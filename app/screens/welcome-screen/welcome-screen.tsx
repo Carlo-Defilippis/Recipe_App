@@ -91,7 +91,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
       <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
         <Header headerTx="" style={HEADER} titleStyle={HEADER_TITLE} />
         <Text style={TITLE_WRAPPER}>
-          <Text style={TITLE} text="Cuppoard Cleanout!" />
+          <Text style={TITLE} text="Cupboard Cleanout!" />
         </Text>
         <Image source={ccLogo} style={BOWSER} />
         <Text style={TITLE} text="Let's get cooking!" />
@@ -101,6 +101,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <TextInput 
           style={INPUT}
           keyboardType={'default'}
+          autoCorrect={true}
           placeholder={'e.g. lemon'}
           onChangeText={(val) => setIngredient(val)}/>
         <Text style={CONTENT}>

@@ -8,7 +8,7 @@
 
 <br>
 
-<p align="center">Trying to pull a meal together with a box of pasta and a lonely green pepper and lemon in your fridge? Simply input your ingredients, allergies, and diet restrictions in Cupboard Cleanout and discover hundreds of recipes curated just for you!</p>
+<p align="center">Trying to pull a meal together with a box of pasta and a lonely green pepper in your fridge? Simply input your ingredients, allergies, and diet restrictions in Cupboard Cleanout and discover hundreds of recipes curated just for you!</p>
 
 <br>
 
@@ -22,7 +22,7 @@
 
 ## DESCRIPTION
 
-It is easy to let our food go to waste, especially with the scraps of food leftover from a week of cooking.  What are you supposed to do with the 1/2 an onion in the back of the fridge, or the jar of tomato sauce that is about to expire in the pantry.  With Cupboard Cleanout users never have to worry about throwing out groceries again.
+How often do you open the fridge to find it packed with random ingredients?  What are you supposed to do with the 1/2 an onion in the back of the fridge, or the jar of tomato sauce that is about to expire in the pantry?  With Cupboard Cleanout users never have to worry about throwing away groceries again.
 
 Simply input your ingredients on the homepage of the app and a list of recipes will be curated immediately.  Not hungry?  Try searching for a new cocktail recipe instead!
 

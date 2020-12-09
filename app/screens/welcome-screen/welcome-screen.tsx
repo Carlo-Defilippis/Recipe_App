@@ -1,9 +1,10 @@
 import React, { useState } from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, TextInput } from "react-native"
+import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, TextInput, ScrollView } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing, typography } from "../../theme"
+import { palette } from "../../theme/palette"
 const ccLogo = require('./ccLogo50.png')
 
 const FULL: ViewStyle = { flex: 1 }
@@ -40,50 +41,65 @@ const TITLE: TextStyle = {
   lineHeight: 38,
   textAlign: "center",
 }
-
 const BOWSER: ImageStyle = {
   alignSelf: "center",
-  marginVertical: spacing[5],
+  marginVertical: spacing[1],
   maxWidth: "100%",
 }
-const CONTENT: TextStyle = {
+const DIRECTIONS: TextStyle = {
   ...TEXT,
   color: "#FFFFFF",
+  fontSize: 16,
+  lineHeight: 22,
+  textAlign: "center",
+  marginTop: spacing[5],
+}
+const INPUT: ViewStyle = {
+  borderWidth: 1,
+  alignItems: "center",
+  padding: 9,
+  marginTop: spacing[3],
+  flex: 1,
+  justifyContent: "center",
+  backgroundColor: "#FFF"
+}
+const ADDBUTTON: ViewStyle = {
+  flex: 1,
+  paddingVertical: 9,
+}
+const ITEMS: TextStyle = {
+  ...TEXT,
   fontSize: 15,
   lineHeight: 22,
   textAlign: "center",
-  marginBottom: spacing[5],
+  marginBottom: spacing[3],
+  marginTop: spacing[3],
 }
-const CONTINUE: ViewStyle = {
+const SEARCH: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
-  backgroundColor: "#007FFF",
+  backgroundColor: palette.lightBlue,
 }
-const CONTINUE_TEXT: TextStyle = {
+const SEARCH_TEXT: TextStyle = {
   ...TEXT,
   ...BOLD,
   fontSize: 13,
-  letterSpacing: 2,
+  letterSpacing: 1,
 }
 const FOOTER: ViewStyle = { }
 const FOOTER_CONTENT: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
 }
-const INPUT: ViewStyle = {
-  borderWidth: 2,
-  alignItems: "center",
-  padding: 8,
-  margin: 10,
-  flex: 1,
-  justifyContent: "center",
-  backgroundColor: "#FFF"
-}
-
 export const WelcomeScreen = observer(function WelcomeScreen() {
   const navigation = useNavigation()
   const nextScreen = () => navigation.navigate("mealResult")
-  const [ingredient, setIngredient] = useState('');
+  // const [ingredient, setIngredient] = useState([
+  //   {name: 'lemon', key: '1'},
+  //   {name: 'chicken', key: '2'},
+  //   {name: 'asparagus', key: '3'},
+  //   {name: 'spinach', key: '4'},
+  // ]);
 
   return (
     <View style={FULL}>
@@ -95,27 +111,40 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         </Text>
         <Image source={ccLogo} style={BOWSER} />
         <Text style={TITLE} text="Let's get cooking!" />
-        <Text style={CONTENT}>
+        <Text style={DIRECTIONS}>
           Add your ingredients here:
         </Text>
         <TextInput 
           style={INPUT}
           keyboardType={'default'}
-          autoCorrect={true}
+          autoCorrect={true} 
           placeholder={'e.g. lemon'}
-          onChangeText={(val) => setIngredient(val)}/>
-        <Text style={CONTENT}>
-          Ingredients: {ingredient}
-        </Text>
-        <Button
-            style={CONTINUE}
-            textStyle={CONTINUE_TEXT}
-            tx="welcomeScreen.search"
-            onPress={nextScreen}
           />
+        <Button
+          style={ADDBUTTON}
+          textStyle={SEARCH_TEXT}
+          text="ADD"
+        />
+        <Text style={ITEMS}>
+          Ingredients: 
+        </Text>
+        {/* <ScrollView>
+          { ingredient.map(item => (
+              <View key={item.key}>
+                <Text>(item.name)</Text>
+              </View>
+            )
+          )}
+          </ScrollView> */}
       </Screen>
       <SafeAreaView style={FOOTER}>
         <View style={FOOTER_CONTENT}>
+      <Button
+            style={SEARCH}
+            textStyle={SEARCH_TEXT}
+            text="SEARCH RECIPES"
+            onPress={nextScreen}
+          />
         </View>
       </SafeAreaView>
     </View>

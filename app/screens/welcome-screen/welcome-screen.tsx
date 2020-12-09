@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing, typography } from "../../theme"
+import { palette } from "../../theme/palette"
 const ccLogo = require('./ccLogo50.png')
 
 const FULL: ViewStyle = { flex: 1 }
@@ -40,30 +41,29 @@ const TITLE: TextStyle = {
   lineHeight: 38,
   textAlign: "center",
 }
-
 const BOWSER: ImageStyle = {
   alignSelf: "center",
-  marginVertical: spacing[5],
+  marginVertical: spacing[1],
   maxWidth: "100%",
 }
 const CONTENT: TextStyle = {
   ...TEXT,
-  color: "#FFFFFF",
   fontSize: 15,
   lineHeight: 22,
   textAlign: "center",
-  marginBottom: spacing[5],
+  marginBottom: spacing[3],
+  marginTop: spacing[3],
 }
-const CONTINUE: ViewStyle = {
+const SEARCH: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
-  backgroundColor: "#007FFF",
+  backgroundColor: palette.lightBlue,
 }
-const CONTINUE_TEXT: TextStyle = {
+const SEARCH_TEXT: TextStyle = {
   ...TEXT,
   ...BOLD,
   fontSize: 13,
-  letterSpacing: 2,
+  letterSpacing: 1,
 }
 const FOOTER: ViewStyle = { }
 const FOOTER_CONTENT: ViewStyle = {
@@ -79,11 +79,26 @@ const INPUT: ViewStyle = {
   justifyContent: "center",
   backgroundColor: "#FFF"
 }
-
+const DIRECTIONS: TextStyle = {
+  ...TEXT,
+  color: "#FFFFFF",
+  fontSize: 16,
+  lineHeight: 22,
+  textAlign: "center",
+  marginTop: spacing[5],
+}
+const ADDBUTTON: ViewStyle = {
+  paddingVertical: spacing[4],
+  paddingHorizontal: spacing[4],
+  padding: 8,
+  margin: 10,
+  flex: 1,
+}
 export const WelcomeScreen = observer(function WelcomeScreen() {
   const navigation = useNavigation()
   const nextScreen = () => navigation.navigate("mealResult")
-  const [ingredient, setIngredient] = useState('');
+  //const addIngredient = () => 
+  const [ingredient, setIngredient] = useState([]);
 
   return (
     <View style={FULL}>
@@ -95,22 +110,29 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         </Text>
         <Image source={ccLogo} style={BOWSER} />
         <Text style={TITLE} text="Let's get cooking!" />
-        <Text style={CONTENT}>
+        <Text style={DIRECTIONS}>
           Add your ingredients here:
         </Text>
         <TextInput 
           style={INPUT}
           keyboardType={'default'}
-          autoCorrect={true}
+          autoCorrect={true} 
           placeholder={'e.g. lemon'}
-          onChangeText={(val) => setIngredient(val)}/>
+          onChangeText={(val) => setIngredient([val])}/>
+        <Button
+          style={ADDBUTTON}
+          textStyle={SEARCH_TEXT}
+          text="ADD"
+          //onPress={addIngredient}
+          />
         <Text style={CONTENT}>
           Ingredients: {ingredient}
         </Text>
+
         <Button
-            style={CONTINUE}
-            textStyle={CONTINUE_TEXT}
-            tx="welcomeScreen.search"
+            style={SEARCH}
+            textStyle={SEARCH_TEXT}
+            text="SEARCH RECIPES"
             onPress={nextScreen}
           />
       </Screen>

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, TextInput } from "react-native"
+import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, TextInput, ScrollView } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
@@ -46,7 +46,28 @@ const BOWSER: ImageStyle = {
   marginVertical: spacing[1],
   maxWidth: "100%",
 }
-const CONTENT: TextStyle = {
+const DIRECTIONS: TextStyle = {
+  ...TEXT,
+  color: "#FFFFFF",
+  fontSize: 16,
+  lineHeight: 22,
+  textAlign: "center",
+  marginTop: spacing[5],
+}
+const INPUT: ViewStyle = {
+  borderWidth: 1,
+  alignItems: "center",
+  padding: 9,
+  marginTop: spacing[3],
+  flex: 1,
+  justifyContent: "center",
+  backgroundColor: "#FFF"
+}
+const ADDBUTTON: ViewStyle = {
+  flex: 1,
+  paddingVertical: 9,
+}
+const ITEMS: TextStyle = {
   ...TEXT,
   fontSize: 15,
   lineHeight: 22,
@@ -70,35 +91,15 @@ const FOOTER_CONTENT: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
 }
-const INPUT: ViewStyle = {
-  borderWidth: 2,
-  alignItems: "center",
-  padding: 8,
-  margin: 10,
-  flex: 1,
-  justifyContent: "center",
-  backgroundColor: "#FFF"
-}
-const DIRECTIONS: TextStyle = {
-  ...TEXT,
-  color: "#FFFFFF",
-  fontSize: 16,
-  lineHeight: 22,
-  textAlign: "center",
-  marginTop: spacing[5],
-}
-const ADDBUTTON: ViewStyle = {
-  paddingVertical: spacing[4],
-  paddingHorizontal: spacing[4],
-  padding: 8,
-  margin: 10,
-  flex: 1,
-}
 export const WelcomeScreen = observer(function WelcomeScreen() {
   const navigation = useNavigation()
   const nextScreen = () => navigation.navigate("mealResult")
-  //const addIngredient = () => 
-  const [ingredient, setIngredient] = useState([]);
+  // const [ingredient, setIngredient] = useState([
+  //   {name: 'lemon', key: '1'},
+  //   {name: 'chicken', key: '2'},
+  //   {name: 'asparagus', key: '3'},
+  //   {name: 'spinach', key: '4'},
+  // ]);
 
   return (
     <View style={FULL}>
@@ -118,26 +119,32 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
           keyboardType={'default'}
           autoCorrect={true} 
           placeholder={'e.g. lemon'}
-          onChangeText={(val) => setIngredient([val])}/>
+          />
         <Button
           style={ADDBUTTON}
           textStyle={SEARCH_TEXT}
           text="ADD"
-          //onPress={addIngredient}
-          />
-        <Text style={CONTENT}>
-          Ingredients: {ingredient}
+        />
+        <Text style={ITEMS}>
+          Ingredients: 
         </Text>
-
-        <Button
+        {/* <ScrollView>
+          { ingredient.map(item => (
+              <View key={item.key}>
+                <Text>(item.name)</Text>
+              </View>
+            )
+          )}
+          </ScrollView> */}
+      </Screen>
+      <SafeAreaView style={FOOTER}>
+        <View style={FOOTER_CONTENT}>
+      <Button
             style={SEARCH}
             textStyle={SEARCH_TEXT}
             text="SEARCH RECIPES"
             onPress={nextScreen}
           />
-      </Screen>
-      <SafeAreaView style={FOOTER}>
-        <View style={FOOTER_CONTENT}>
         </View>
       </SafeAreaView>
     </View>

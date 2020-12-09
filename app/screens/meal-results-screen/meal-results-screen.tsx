@@ -68,7 +68,8 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
     const myResults = mealResultsAPI.getUsers()
     const navigation = useNavigation()
     const welcomeScreen = () => navigation.navigate("welcome")
-    console.log(myResults)
+    console.tron.log('This is the DOM ',window)
+
   return (
     <View style={FULL}>
     <Wallpaper />

@@ -1,13 +1,14 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
-import { ViewStyle, View, TextStyle, ClippingRectangle } from "react-native"
+import { ViewStyle, View, TextStyle, ClippingRectangle, FlatList } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { Screen, Text, Button, Wallpaper } from "../../components"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "../../models"
 import { color, spacing, typography } from "../../theme"
-import { DataTable } from 'react-native-paper'
+import { ActivityIndicator, DataTable } from 'react-native-paper'
 import { Api } from "../../services/api"
+import DEFAULT_API_CONFIG from "../../services/api/api-config"
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
@@ -55,6 +56,8 @@ const TITLE: TextStyle = {
   textAlign: "center",
 }
 
+
+
 export const MealResultsScreen = observer(function MealResultsScreen() {
   // Pull in one of our MST stores
   // const { someStore, anotherStore } = useStores()
@@ -68,7 +71,22 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
     const myResults = mealResultsAPI.getUsers()
     const navigation = useNavigation()
     const welcomeScreen = () => navigation.navigate("welcome")
-    console.tron.log('This is the DOM ',window)
+
+
+    console.tron.log("My Log ",mealResultsAPI.config.url)
+
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+  
+    useEffect(() =>{
+      fetch(mealResultsAPI.config.url)
+      .then((response) => response.json())
+      .then((json) => setData(json.results))
+      .catch((error) => alert(error))  // Displays errors
+      .finally(() => setLoading(false)) // change loading state
+    }, [])
+
+    console.tron.log("Logging the data ",data, isLoading);
 
   return (
     <View style={FULL}>
@@ -80,6 +98,33 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
         <DataTable.Title>Description</DataTable.Title>
         <DataTable.Title>Link</DataTable.Title>
       </DataTable.Header>
+      
+        {isLoading ? ( <ActivityIndicator /> ) : 
+        (
+        data.map(datas => {
+          return (
+            <DataTable.Row
+              style={CONTINUE}
+              key={datas.location.coordinates.latitude} // you need a unique key per item
+              onPress={() => {
+                // added to illustrate how you can make the row take the onPress event and do something
+                console.log(`selected account ${data.gender}`)
+              }}
+            >
+              <DataTable.Cell>
+                {datas.name.first}
+              </DataTable.Cell>
+              <DataTable.Cell>
+                {datas.gender}
+              </DataTable.Cell>
+              <DataTable.Cell numeric>
+                {datas.location.postcode}
+              </DataTable.Cell>
+            </DataTable.Row>
+        )}))
+        }
+        
+      
       <View style={FOOTER_CONTENT}>
           <Button
             style={CONTINUE}

@@ -6,9 +6,10 @@ import { Screen, Text, Button, Wallpaper } from "../../components"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "../../models"
 import { color, spacing, typography } from "../../theme"
-import { ActivityIndicator, DataTable } from 'react-native-paper'
+import { ActivityIndicator, Avatar, DataTable } from 'react-native-paper'
 import { Api } from "../../services/api"
 import DEFAULT_API_CONFIG from "../../services/api/api-config"
+import { Image } from "react-native-paper/lib/typescript/src/components/Avatar/Avatar"
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
@@ -108,11 +109,13 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
               key={datas.location.coordinates.latitude} // you need a unique key per item
               onPress={() => {
                 // added to illustrate how you can make the row take the onPress event and do something
-                console.log(`selected account ${data.gender}`)
+                console.log(`selected id latitude is ${datas.location.coordinates.latitude}`)
               }}
             >
               <DataTable.Cell>
-                {datas.name.first}
+                <Avatar.Image source={{
+                  uri:`${datas.picture.large}`
+                  }} />
               </DataTable.Cell>
               <DataTable.Cell>
                 {datas.gender}

@@ -15,6 +15,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* MyRecipeTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MyRecipeTestTests.m */; };
+		67CA95672593D86700DA1D68 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 67CA95662593D86700DA1D68 /* fonts */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8AC58702824F70E4CF727377 /* libPods-MyRecipeTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B16C042E502CF88C409D09F /* libPods-MyRecipeTest.a */; };
 		96246AA3A113BBD977D4639C /* libPods-MyRecipeTest-MyRecipeTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC41DF18D676D3AC64947E5 /* libPods-MyRecipeTest-MyRecipeTestTests.a */; };
@@ -59,6 +60,7 @@
 		4E28B4E61840C5602FEEAD1A /* Pods-MyRecipeTest-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRecipeTest-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MyRecipeTest-tvOSTests/Pods-MyRecipeTest-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		64BF655060288BD42501B536 /* Pods-MyRecipeTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRecipeTest.release.xcconfig"; path = "Target Support Files/Pods-MyRecipeTest/Pods-MyRecipeTest.release.xcconfig"; sourceTree = "<group>"; };
 		67B42A11BDF7197F49B59D26 /* libPods-MyRecipeTest-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyRecipeTest-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		67CA95662593D86700DA1D68 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		7B3C122D6CB57D0CC1057D04 /* Pods-MyRecipeTest-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRecipeTest-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-MyRecipeTest-tvOSTests/Pods-MyRecipeTest-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MyRecipeTest/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		944A2A55BA0CEC0A2BA37EF6 /* Pods-MyRecipeTest-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyRecipeTest-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MyRecipeTest-tvOS/Pods-MyRecipeTest-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +163,6 @@
 				4E28B4E61840C5602FEEAD1A /* Pods-MyRecipeTest-tvOSTests.debug.xcconfig */,
 				7B3C122D6CB57D0CC1057D04 /* Pods-MyRecipeTest-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -182,6 +183,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				67CA95662593D86700DA1D68 /* fonts */,
 				13B07FAE1A68108700A75B9A /* MyRecipeTest */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MyRecipeTestTests */,
@@ -348,6 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67CA95672593D86700DA1D68 /* fonts in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);

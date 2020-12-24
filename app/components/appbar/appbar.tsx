@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Appbar } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
+import { useNavigation } from "@react-navigation/native"
+
+
 
 const styles = StyleSheet.create({
   bottom: {
@@ -8,23 +11,28 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
+    height: 80,
+    backgroundColor: 'black',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
   },
 });
 
-const MyAppBar = () => (
+export default function MyAppBar() { 
+    const navigation = useNavigation()
+    const welcomeScreen = () => navigation.navigate("welcome") 
+
+   return (
  <Appbar style={styles.bottom}>
    <Appbar.Action
      icon="home"
-     onPress={() => console.log('Pressed archive')}
+     onPress={welcomeScreen}
     />
-    <Appbar.Action icon="mail" onPress={() => console.log('Pressed mail')} />
-    <Appbar.Action icon="label" onPress={() => console.log('Pressed label')} />
+    <Appbar.Action icon="magnify" onPress={() => console.log('Pressed mail')} />
     <Appbar.Action
-      icon="delete"
+      icon="view-list"
       onPress={() => console.log('Pressed delete')}
     />
   </Appbar>
- );
-
-export default MyAppBar
-
+ )};

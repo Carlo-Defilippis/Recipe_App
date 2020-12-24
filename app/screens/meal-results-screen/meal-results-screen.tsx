@@ -11,12 +11,6 @@ import { Api } from "../../services/api"
 import MyAppBar from "../../components/appbar/appbar"
 
 
-
-//dummy api response from API so to not exceed limits
-
-
-
-
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
   backgroundColor: color.transparent,
@@ -63,13 +57,12 @@ const TITLE: TextStyle = {
   textAlign: "center",
 }
 
-const itemsPerPage = 5
-
 export const MealResultsScreen = observer(function MealResultsScreen() {
   // Pull in one of our MST stores
   // const { someStore, anotherStore } = useStores()
   // OR
   // const rootStore = useStores()
+
   // Dummy api used to not exceed limit
 
   const dummyAPI = [

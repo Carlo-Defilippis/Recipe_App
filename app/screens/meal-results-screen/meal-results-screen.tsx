@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
-import { ViewStyle, View, TextStyle, ClippingRectangle, FlatList, Linking, StyleSheet } from "react-native"
+import { ViewStyle, View, TextStyle, Linking, Alert } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { Screen, Text, Button, Wallpaper } from "../../components"
 // import { useNavigation } from "@react-navigation/native"
@@ -418,7 +418,7 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
     fetch(mealResultsAPI.config.url)
       .then((response) => response.json())
       .then((json) => setData(json.results))
-      .catch((error) => alert(error))  // Displays errors
+      .catch((error) => Alert.alert(error))  // Displays errors
       .finally(() => setLoading(false)) // change loading state
   }, [])
 
@@ -452,7 +452,7 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
                         if (supported) {
                           Linking.openURL(datas.recipe.url);
                         } else {
-                          alert("Sorry! I don't know how to open URI: " + datas.recipe.url);
+                          Alert.alert("Sorry! I don't know how to open URI: " + datas.recipe.url);
                         }
                       });
                     }}

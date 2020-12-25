@@ -1,10 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, TextInput, ScrollView } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing, typography } from "../../theme"
 import { palette } from "../../theme/palette"
+import { generate } from 'shortid'
+import { produce } from 'immer'
+import { map } from "ramda"
 const ccLogo = require('./ccLogo50.png')
 
 const FULL: ViewStyle = { flex: 1 }
@@ -64,8 +67,12 @@ const INPUT: ViewStyle = {
   backgroundColor: "#FFF"
 }
 const ADDBUTTON: ViewStyle = {
-  flex: 1,
-  paddingVertical: 9,
+  flex: 2,
+  paddingVertical: 13,
+  marginTop: 1,
+  marginBottom: 1,
+  marginLeft: 60,
+  marginRight: 60
 }
 const ITEMS: TextStyle = {
   ...TEXT,
@@ -86,21 +93,41 @@ const SEARCH_TEXT: TextStyle = {
   fontSize: 13,
   letterSpacing: 1,
 }
-const FOOTER: ViewStyle = { }
+const PILL_BUTTON: ViewStyle = {
+  borderWidth:1,
+  borderColor:'rgba(0,0,0,0.2)',
+  alignItems:'center',
+  justifyContent:'center',
+  width:100,
+  height:60,
+  backgroundColor:palette.orange,
+  borderRadius:50,
+}
+const FOOTER: ViewStyle = {}
 const FOOTER_CONTENT: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
 }
+
+  interface Search {
+    id: string
+    searchTerm: string
+  }
+
+
 export const WelcomeScreen = observer(function WelcomeScreen() {
+
+
+
   const navigation = useNavigation()
   const nextScreen = () => navigation.navigate("mealResult")
-  // const [ingredient, setIngredient] = useState([
-  //   {name: 'lemon', key: '1'},
-  //   {name: 'chicken', key: '2'},
-  //   {name: 'asparagus', key: '3'},
-  //   {name: 'spinach', key: '4'},
-  // ]);
+  const [searches, setSearches] = useState<Search[]>([
+    { id: '1', searchTerm: 'avocado' }
+  ]);
+  const [query, setQuery] = useState<string>("");
 
+
+  console.tron.log(query)
   return (
     <View style={FULL}>
       <Wallpaper />
@@ -114,32 +141,57 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <Text style={DIRECTIONS}>
           Add your ingredients here:
         </Text>
-        <TextInput 
+        <TextInput
           style={INPUT}
           keyboardType={'default'}
-          autoCorrect={true} 
+          autoCorrect={true}
           placeholder={'e.g. lemon'}
-          />
+          onChangeText={(e) => {
+            setQuery(e)
+ 
+          }}
+        // onKeyPress={keyPressed}
+        />
         <Button
           style={ADDBUTTON}
           textStyle={SEARCH_TEXT}
           text="ADD"
+          onPress={() => 
+            setSearches(currentSearches => 
+                  produce(currentSearches, v => {
+                    v[0].searchTerm = v[0].searchTerm.concat("+"+query)
+                    console.tron.log('V ',v)
+                  })
+                  )
+          }
+
+        />
+        <Button
+          style={ADDBUTTON}
+          textStyle={SEARCH_TEXT}
+          text="CLEAR LIST"
+          onPress={() => 
+            setSearches([{id: '', searchTerm: ''}]
+                  )
+          }
+
         />
         <Text style={ITEMS}>
-          Ingredients: 
+          Ingredients:
         </Text>
-        {/* <ScrollView>
-          { ingredient.map(item => (
-              <View key={item.key}>
-                <Text>(item.name)</Text>
+        <ScrollView>
+          {searches.map(s => {
+            return (
+              <View key={s.id}>
+                <Button style={PILL_BUTTON}><Text style={SEARCH_TEXT}>{s.searchTerm}</Text></Button>
               </View>
-            )
-          )}
-          </ScrollView> */}
+            );
+          })}
+        </ScrollView>
       </Screen>
       <SafeAreaView style={FOOTER}>
         <View style={FOOTER_CONTENT}>
-      <Button
+          <Button
             style={SEARCH}
             textStyle={SEARCH_TEXT}
             text="SEARCH RECIPES"

@@ -7,7 +7,8 @@ import { color, spacing, typography } from "../../theme"
 import { palette } from "../../theme/palette"
 import { generate } from 'shortid'
 import { produce } from 'immer'
-import { map } from "ramda"
+import TagInput from 'react-native-tags-input';
+
 const ccLogo = require('./ccLogo50.png')
 
 const FULL: ViewStyle = { flex: 1 }
@@ -71,8 +72,8 @@ const ADDBUTTON: ViewStyle = {
   paddingVertical: 13,
   marginTop: 1,
   marginBottom: 1,
-  marginLeft: 60,
-  marginRight: 60
+  marginLeft: spacing[6],
+  marginRight: spacing[6]
 }
 const ITEMS: TextStyle = {
   ...TEXT,
@@ -97,7 +98,6 @@ const PILL_BUTTON: ViewStyle = {
   borderWidth:1,
   borderColor:'rgba(0,0,0,0.2)',
   alignItems:'center',
-  justifyContent:'center',
   width:100,
   height:60,
   backgroundColor:palette.orange,
@@ -107,6 +107,11 @@ const FOOTER: ViewStyle = {}
 const FOOTER_CONTENT: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
+}
+const PILLS: ViewStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  marginRight: 1
 }
 
   interface Search {
@@ -121,13 +126,10 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
 
   const navigation = useNavigation()
   const nextScreen = () => navigation.navigate("mealResult")
-  const [searches, setSearches] = useState<Search[]>([
-    { id: '1', searchTerm: 'avocado' }
-  ]);
-  const [query, setQuery] = useState<string>("");
+  const [ searches, setSearches ] = useState<Search[]>([]);
+  const [ query, setQuery ] = useState<string>("");
+  let mySubmitArray = ''
 
-
-  console.tron.log(query)
   return (
     <View style={FULL}>
       <Wallpaper />
@@ -145,10 +147,11 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
           style={INPUT}
           keyboardType={'default'}
           autoCorrect={true}
+          textAlign={'center'}
           placeholder={'e.g. lemon'}
+          enablesReturnKeyAutomatically={true}
           onChangeText={(e) => {
             setQuery(e)
- 
           }}
         // onKeyPress={keyPressed}
         />
@@ -156,15 +159,16 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
           style={ADDBUTTON}
           textStyle={SEARCH_TEXT}
           text="ADD"
-          onPress={() => 
-            setSearches(currentSearches => 
-                  produce(currentSearches, v => {
-                    v[0].searchTerm = v[0].searchTerm.concat("+"+query)
-                    console.tron.log('V ',v)
-                  })
-                  )
+          onPress={() => {
+            setSearches(currentSearches => [
+              ...currentSearches,
+              {
+                id: generate(),
+                searchTerm: query
+              }
+            ]);
           }
-
+        } 
         />
         <Button
           style={ADDBUTTON}
@@ -180,13 +184,17 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
           Ingredients:
         </Text>
         <ScrollView>
+        <View style={PILLS}>
           {searches.map(s => {
+            if (s.id != "" && s.searchTerm != "") {
             return (
-              <View key={s.id}>
-                <Button style={PILL_BUTTON}><Text style={SEARCH_TEXT}>{s.searchTerm}</Text></Button>
-              </View>
+                <Button key={s.id} style={PILL_BUTTON}><Text style={SEARCH_TEXT}>{s.searchTerm}</Text></Button>
             );
+            } else {
+              return null
+            }
           })}
+          </View>
         </ScrollView>
       </Screen>
       <SafeAreaView style={FOOTER}>
@@ -195,7 +203,12 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
             style={SEARCH}
             textStyle={SEARCH_TEXT}
             text="SEARCH RECIPES"
-            onPress={nextScreen}
+            onPress={() =>
+              searches.map(c => {
+                mySubmitArray.concat(c.searchTerm)
+                console.tron.log('Submit Button ', c, 'Submit array ', mySubmitArray)
+              })
+            }
           />
         </View>
       </SafeAreaView>

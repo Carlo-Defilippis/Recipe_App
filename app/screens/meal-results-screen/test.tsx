@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { View, Animated } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View } from 'react-native';
 import { DataTable, ProgressBar, Colors, Text } from 'react-native-paper';
 
 function Datatable({

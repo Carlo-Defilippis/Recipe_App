@@ -5,10 +5,8 @@ import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing, typography } from "../../theme"
 import { palette } from "../../theme/palette"
-import { generate } from 'shortid'
-import { produce } from 'immer'
-import TagInput from 'react-native-tags-input';
-
+import { generate } from 'shortid';
+import Icon from 'react-native-vector-icons/FontAwesome';
 const ccLogo = require('./ccLogo50.png')
 
 const FULL: ViewStyle = { flex: 1 }
@@ -61,11 +59,12 @@ const DIRECTIONS: TextStyle = {
 const INPUT: ViewStyle = {
   borderWidth: 1,
   alignItems: "center",
+  alignContent: 'center',
   padding: 9,
   marginTop: spacing[3],
   flex: 1,
   justifyContent: "center",
-  backgroundColor: "#FFF"
+  backgroundColor: "#FFF",
 }
 const ADDBUTTON: ViewStyle = {
   flex: 2,
@@ -94,14 +93,20 @@ const SEARCH_TEXT: TextStyle = {
   fontSize: 13,
   letterSpacing: 1,
 }
+const PILL_TEXT: TextStyle = {
+  ...TEXT,
+  ...BOLD,
+  fontSize: 12,
+  letterSpacing: 0,
+}
 const PILL_BUTTON: ViewStyle = {
-  borderWidth:1,
-  borderColor:'rgba(0,0,0,0.2)',
-  alignItems:'center',
-  width:100,
-  height:60,
-  backgroundColor:palette.orange,
-  borderRadius:50,
+  borderWidth: 1,
+  borderColor: 'rgba(0,0,0,0.2)',
+  alignItems: 'center',
+  width: 75,
+  height: 40,
+  backgroundColor: palette.orange,
+  borderRadius: 50,
 }
 const FOOTER: ViewStyle = {}
 const FOOTER_CONTENT: ViewStyle = {
@@ -111,23 +116,24 @@ const FOOTER_CONTENT: ViewStyle = {
 const PILLS: ViewStyle = {
   display: 'flex',
   flexDirection: 'row',
+  flexWrap: 'wrap',
   marginRight: 1
 }
+const CENTER: TextStyle = {
+  textAlign: 'center'
+}
 
-  interface Search {
-    id: string
-    searchTerm: string
-  }
-
+interface Search {
+  id: string
+  searchTerm: string
+}
 
 export const WelcomeScreen = observer(function WelcomeScreen() {
 
-
-
   const navigation = useNavigation()
   const nextScreen = () => navigation.navigate("mealResult")
-  const [ searches, setSearches ] = useState<Search[]>([]);
-  const [ query, setQuery ] = useState<string>("");
+  const [searches, setSearches] = useState<Search[]>([]);
+  const [query, setQuery] = useState<string>("");
   let mySubmitArray = ''
 
   return (
@@ -143,22 +149,22 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <Text style={DIRECTIONS}>
           Add your ingredients here:
         </Text>
-        <TextInput
-          style={INPUT}
-          keyboardType={'default'}
-          autoCorrect={true}
-          textAlign={'center'}
-          placeholder={'e.g. lemon'}
-          enablesReturnKeyAutomatically={true}
-          onChangeText={(e) => {
-            setQuery(e)
-          }}
-        // onKeyPress={keyPressed}
-        />
+        <View style={INPUT}>
+          <TextInput
+            style={CENTER}
+            keyboardType={'default'}
+            autoCorrect={true}
+            placeholder={'e.g. lemon'}
+            enablesReturnKeyAutomatically={true}
+            onChangeText={(e) => {
+              setQuery(e)
+            }}
+          />
+        </View>
         <Button
           style={ADDBUTTON}
           textStyle={SEARCH_TEXT}
-          text="ADD"
+          text="ADD INGREDIENTS"
           onPress={() => {
             setSearches(currentSearches => [
               ...currentSearches,
@@ -168,32 +174,39 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
               }
             ]);
           }
-        } 
+          }
         />
         <Button
           style={ADDBUTTON}
           textStyle={SEARCH_TEXT}
-          text="CLEAR LIST"
-          onPress={() => 
-            setSearches([{id: '', searchTerm: ''}]
-                  )
+          text="CLEAR INGREDIENTS"
+          onPress={() =>
+            setSearches([{ id: '', searchTerm: '' }]
+            )
           }
-
         />
         <Text style={ITEMS}>
           Ingredients:
         </Text>
         <ScrollView>
-        <View style={PILLS}>
-          {searches.map(s => {
-            if (s.id != "" && s.searchTerm != "") {
-            return (
-                <Button key={s.id} style={PILL_BUTTON}><Text style={SEARCH_TEXT}>{s.searchTerm}</Text></Button>
-            );
-            } else {
-              return null
-            }
-          })}
+          <View style={PILLS}>
+            {searches.map(s => {
+              if (s.id != "" && s.searchTerm != "") {
+                return (
+                  <Button key={s.id} style={PILL_BUTTON}><Icon name={'close'} onPress={() => [
+                    setSearches(currentSearches => [
+                      ...currentSearches,
+                      {
+                        id: '',
+                        searchTerm: ''
+                      }
+                    ])
+                  ]} size={15} style={{alignItems: "flex-end", position: 'absolute', top: 1, right: 1, marginRight: 6}}></Icon><Text style={PILL_TEXT}>{s.searchTerm}</Text></Button>
+                );
+              } else {
+                return null
+              }
+            })}
           </View>
         </ScrollView>
       </Screen>
@@ -203,12 +216,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
             style={SEARCH}
             textStyle={SEARCH_TEXT}
             text="SEARCH RECIPES"
-            onPress={() =>
-              searches.map(c => {
-                mySubmitArray.concat(c.searchTerm)
-                console.tron.log('Submit Button ', c, 'Submit array ', mySubmitArray)
-              })
-            }
+            onPress={nextScreen}
           />
         </View>
       </SafeAreaView>

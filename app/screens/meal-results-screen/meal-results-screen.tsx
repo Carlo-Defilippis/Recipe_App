@@ -406,10 +406,6 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
   // const myResults = mealResultsAPI.getUsers()
   const navigation = useNavigation()
   const welcomeScreen = () => navigation.navigate("welcome")
-
-  
-
-
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [page, setPage] = React.useState(0);
@@ -429,21 +425,17 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
       <Wallpaper />
       <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
         <Text preset="header" style={TITLE} text="Meal Result Screen" />
-
         <DataTable.Header style={CONTINUE}>
-
           <DataTable.Title>Picture</DataTable.Title>
           <DataTable.Title>Recipe</DataTable.Title>
           <DataTable.Title>Calories</DataTable.Title>
           <DataTable.Title># of Ingr.</DataTable.Title>
-
         </DataTable.Header>
         <DataTable>
           {isLoading ? (<ActivityIndicator />) :
             (
               dummyAPI.map(datas => {
                 return (
-                  
                   <DataTable.Row
                     style={CONTINUE}
                     key={datas.recipe.shareAs} // you need a unique key per item
@@ -472,7 +464,6 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
                       {datas.recipe.ingredientLines.length}
                     </DataTable.Cell>
                   </DataTable.Row>
-
                 )
               }))
           }

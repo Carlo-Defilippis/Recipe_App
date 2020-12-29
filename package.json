@@ -41,6 +41,8 @@
     "ramda": "0.27.1",
     "react": "16.13.1",
     "react-native": "0.63.2",
+    "react-native-dropdown-picker": "^3.7.6",
+    "react-native-easy-grid": "^0.2.2",
     "react-native-elements": "^3.0.1",
     "react-native-flex-label": "^0.1.1",
     "react-native-gesture-handler": "^1.5.0",

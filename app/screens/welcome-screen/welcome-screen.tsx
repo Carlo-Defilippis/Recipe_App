@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react"
-import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, TextInput, ScrollView } from "react-native"
+import React, { useState } from "react"
+import { View, Image, ViewStyle, TextStyle, ImageStyle, SafeAreaView, TextInput, ScrollView, Alert } from "react-native"
 import { useNavigation } from "@react-navigation/native"
 import { observer } from "mobx-react-lite"
 import { Button, Header, Screen, Text, Wallpaper } from "../../components"
 import { color, spacing, typography } from "../../theme"
 import { palette } from "../../theme/palette"
 import { generate } from 'shortid';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import DropDownPicker from 'react-native-dropdown-picker';
+import Icon from "react-native-vector-icons/FontAwesome"
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 const ccLogo = require('./ccLogo50.png')
+
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {
@@ -46,15 +49,15 @@ const TITLE: TextStyle = {
 const BOWSER: ImageStyle = {
   alignSelf: "center",
   marginVertical: spacing[1],
-  maxWidth: "100%",
+  maxWidth: "100%"
 }
 const DIRECTIONS: TextStyle = {
   ...TEXT,
   color: "#FFFFFF",
   fontSize: 16,
-  lineHeight: 22,
+  lineHeight: 15,
   textAlign: "center",
-  marginTop: spacing[5],
+  marginTop: spacing[1],
 }
 const INPUT: ViewStyle = {
   borderWidth: 1,
@@ -128,13 +131,17 @@ interface Search {
   searchTerm: string
 }
 
+interface Health {
+  id: string
+  healthTerm: string
+}
+
 export const WelcomeScreen = observer(function WelcomeScreen() {
 
   const navigation = useNavigation()
-  const nextScreen = () => navigation.navigate("mealResult")
   const [searches, setSearches] = useState<Search[]>([]);
   const [query, setQuery] = useState<string>("");
-  let mySubmitArray = ''
+  const [heatlh, setHealthTerm] = useState<Health[]>([]);
 
   return (
     <View style={FULL}>
@@ -144,18 +151,22 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <Text style={TITLE_WRAPPER}>
           <Text style={TITLE} text="Cupboard Cleanout!" />
         </Text>
-        <Image source={ccLogo} style={BOWSER} />
-        <Text style={TITLE} text="Let's get cooking!" />
+        <Image source={ccLogo} style={BOWSER}/>
         <Text style={DIRECTIONS}>
           Add your ingredients here:
         </Text>
         <View style={INPUT}>
           <TextInput
             style={CENTER}
+            returnKeyLabel={'next'}
             keyboardType={'default'}
+            // ref={query}
             autoCorrect={true}
             placeholder={'e.g. lemon'}
             enablesReturnKeyAutomatically={true}
+            // onSubmitEditing={() => {
+            //   this.ref.query.clear
+            // }}
             onChangeText={(e) => {
               setQuery(e)
             }}
@@ -171,7 +182,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
               {
                 id: generate(),
                 searchTerm: query
-              }
+              },
             ]);
           }
           }
@@ -185,6 +196,48 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
             )
           }
         />
+                <Text style={DIRECTIONS}>
+          Add your dietary needs here:
+        </Text>
+        <DropDownPicker
+            items={[
+              { label: 'Vegan', value: 'YYveganYY', icon: () => <MaterialCommunityIcons name="egg-off" size={20} /> },
+              { label: 'Vegetarian', value: 'YYvegetarianYY', icon: () => <MaterialCommunityIcons name="carrot" size={20}/> },
+              { label: 'Paleo', value: 'YYPaleoYY', icon: () => <MaterialCommunityIcons name="food-steak" size={20}/> },
+              { label: 'Dairy-Free', value: 'YYdairy-freeYY', icon: () => <MaterialCommunityIcons name="cow" size={20}/> },
+              { label: 'Gluten-Free', value: 'YYgluten-freeYY', icon: () => <MaterialCommunityIcons name="barley-off" size={20}/> },
+              { label: 'Wheat-Free', value: 'YYwheat-freeYY', icon: () => <MaterialCommunityIcons name="barley-off" size={20}/> },
+              { label: 'Fat-Free', value: 'YYfat-freeYY', icon: () => <MaterialCommunityIcons name="food-off" size={20}/> },
+              { label: 'Low-Sugar', value: 'YYlow-sugarYY', icon: () => <MaterialCommunityIcons name="spoon-sugar" size={20}/> },
+              { label: 'Egg-Free', value: 'YYegg-freeYY', icon: () => <MaterialCommunityIcons name="egg-off" size={20}/> },
+              { label: 'Peanut-Free', value: 'YYPeanut-FreeYY', icon: () => <MaterialCommunityIcons name="peanut-off-outline" size={20}/> },
+              { label: 'Tree-Nut-Free', value: 'YYtree-nut-freeYY', icon: () => <MaterialCommunityIcons name="peanut-off" size={20}/> },
+              { label: 'Soy-Free', value: 'YYsoy-freeYY', icon: () => <MaterialCommunityIcons name="soy-sauce-off" size={20}/> },
+              { label: 'Fish-Free', value: 'YYfish-freeYY', icon: () => <MaterialCommunityIcons name="fish-off" size={20}/> },
+              { label: 'Shell-Fish-Free', value: 'YYshell-fish-freeYY', icon: () => <MaterialCommunityIcons name="fruit-citrus-off" size={20}/> },
+            ]}
+            defaultValue={''}
+            multiple={true}
+            multipleText="%d items have been selected."
+            min={0}
+            max={14}
+
+            containerStyle={{ height: 40, width: 220, alignSelf: 'center' }}
+            itemStyle={{
+              justifyContent: 'center'
+            }}
+            activeLabelStyle={{color: 'green'}}
+            onChangeItem={(item) => {
+              setHealthTerm(currentSearches => [
+                ...currentSearches,
+                {
+                  id: generate(),
+                  healthTerm: item
+                },
+              ]);
+            }
+            }
+          />
         <Text style={ITEMS}>
           Ingredients:
         </Text>
@@ -201,7 +254,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
                         searchTerm: ''
                       }
                     ])
-                  ]} size={15} style={{alignItems: "flex-end", position: 'absolute', top: 1, right: 1, marginRight: 6}}></Icon><Text style={PILL_TEXT}>{s.searchTerm}</Text></Button>
+                  ]} size={15} style={{ alignItems: "flex-end", position: 'absolute', top: 1, right: 1, marginRight: 6 }}></Icon><Text style={PILL_TEXT}>{s.searchTerm}</Text></Button>
                 );
               } else {
                 return null
@@ -216,7 +269,21 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
             style={SEARCH}
             textStyle={SEARCH_TEXT}
             text="SEARCH RECIPES"
-            onPress={nextScreen}
+            onPress={() => {
+              let myResult = ''
+              let mySearchArray = [];
+              searches.forEach((e) => {
+                e.searchTerm.trim()
+                mySearchArray.push(e.searchTerm + "+")
+                myResult = mySearchArray.join('').toString().replace(/^\++|\++$/gm, '').trim()
+              })
+              if (myResult.length != 0) {
+                const nextScreen = () => navigation.navigate('mealResult', { myResult })
+                return nextScreen()
+              } else {
+                Alert.alert("Oh no!", "You have to enter some foods before searching!")
+              }
+            }}
           />
         </View>
       </SafeAreaView>

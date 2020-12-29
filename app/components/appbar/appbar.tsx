@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     bottom: 0,
     height: 80,
     backgroundColor: 'black',
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },

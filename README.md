@@ -71,4 +71,4 @@ In the metro window popup press 'd' to open the developer menu on the phone
 
 Mobile App
 
-Troubleshooting - If you are getting a react icons error please check the following site on how to install vector icons for the ios version and the android version[Here](https://aboutreact.com/react-native-vector-icons/).
+Troubleshooting - If you are getting a react icons error please check the following site on how to install vector icons for the ios version and the android version [Here](https://aboutreact.com/react-native-vector-icons/).

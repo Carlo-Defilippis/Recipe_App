@@ -101,6 +101,7 @@ const PILL_TEXT: TextStyle = {
   ...BOLD,
   fontSize: 12,
   letterSpacing: 0,
+  flexWrap: 'wrap'
 }
 const PILL_BUTTON: ViewStyle = {
   borderWidth: 1,
@@ -136,12 +137,23 @@ interface Health {
   healthTerm: string
 }
 
+
+
+
+
 export const WelcomeScreen = observer(function WelcomeScreen() {
 
   const navigation = useNavigation()
   const [searches, setSearches] = useState<Search[]>([]);
   const [query, setQuery] = useState<string>("");
-  const [heatlh, setHealthTerm] = useState<Health[]>([]);
+  const [health, setHealthTerm] = useState<Health[]>([]);
+
+function removeElement(eraseId) {
+  const items = searches.filter(item => item.id !== eraseId)
+  console.tron.log('INSIDE DELETE FUNCTION ',items)
+  setSearches(items)
+};
+
 
   return (
     <View style={FULL}>
@@ -177,6 +189,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
           textStyle={SEARCH_TEXT}
           text="ADD INGREDIENTS"
           onPress={() => {
+            if (query.length != 0) {
             setSearches(currentSearches => [
               ...currentSearches,
               {
@@ -184,6 +197,9 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
                 searchTerm: query
               },
             ]);
+          } else {
+            Alert.alert("Oh no!", "You have to enter some foods in the search box before adding!")
+          }
           }
           }
         />
@@ -227,15 +243,9 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
               justifyContent: 'center'
             }}
             activeLabelStyle={{color: 'green'}}
-            onChangeItem={(item) => {
-              setHealthTerm(currentSearches => [
-                ...currentSearches,
-                {
-                  id: generate(),
-                  healthTerm: item
-                },
-              ]);
-            }
+            onChangeItem={(item) =>
+              setHealthTerm([{ id: generate(), healthTerm: item }]
+              )
             }
           />
         <Text style={ITEMS}>
@@ -244,17 +254,23 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
         <ScrollView>
           <View style={PILLS}>
             {searches.map(s => {
-              if (s.id != "" && s.searchTerm != "") {
+              if (s.id != "" || s.searchTerm != "") {
+                console.tron.log('log in searches map function ', s, s.searchTerm, searches)
                 return (
-                  <Button key={s.id} style={PILL_BUTTON}><Icon name={'close'} onPress={() => [
-                    setSearches(currentSearches => [
-                      ...currentSearches,
-                      {
-                        id: '',
-                        searchTerm: ''
-                      }
-                    ])
-                  ]} size={15} style={{ alignItems: "flex-end", position: 'absolute', top: 1, right: 1, marginRight: 6 }}></Icon><Text style={PILL_TEXT}>{s.searchTerm}</Text></Button>
+                  <Button 
+                    key={s.id} 
+                    style={PILL_BUTTON}
+                    onPress={() => {
+                      removeElement(s.id)
+                      console.tron.log('button pressed with id ' + s.id + ' And query of ' + s.searchTerm)
+                    }}
+                    >
+                      <Icon 
+                        name={'close'} 
+                        size={15} 
+                        style={{ alignItems: "flex-end", position: 'absolute', top: 1, right: 1, marginRight: 6 }}
+                        />
+                          <Text style={PILL_TEXT}>{s.searchTerm}</Text></Button>
                 );
               } else {
                 return null
@@ -273,8 +289,8 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
               let myResult = ''
               let mySearchArray = [];
               searches.forEach((e) => {
-                e.searchTerm.trim()
-                mySearchArray.push(e.searchTerm + "+")
+                const term = e.searchTerm.trim()
+                mySearchArray.push(term + "+")
                 myResult = mySearchArray.join('').toString().replace(/^\++|\++$/gm, '').trim()
               })
               if (myResult.length != 0) {

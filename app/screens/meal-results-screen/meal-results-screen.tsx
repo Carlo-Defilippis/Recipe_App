@@ -10,6 +10,7 @@ import { ActivityIndicator, Avatar, DataTable } from 'react-native-paper'
 import { Api } from "../../services/api"
 import MyAppBar from "../../components/appbar/appbar"
 import { Col, Row, Grid } from "react-native-easy-grid";
+import { black } from "react-native-paper/lib/typescript/src/styles/colors"
 
 
 const FULL: ViewStyle = {
@@ -30,6 +31,13 @@ const CONTINUE: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
   backgroundColor: "#007FFF"
+}
+const CONTINUE_BORDER: ViewStyle = {
+  paddingVertical: spacing[4],
+  paddingHorizontal: spacing[4],
+  backgroundColor: "#007FFF",
+  borderColor: '#000000',
+  borderWidth: 1
 }
 const CONTINUE_TEXT: TextStyle = {
   ...TEXT,
@@ -102,13 +110,7 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
     <View style={FULL}>
       <Wallpaper />
       <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
-        <Text preset="header" style={TITLE} text="Meal Result Screen" />
-        <Grid style={CONTINUE}>
-          <Col><Text>Picture</Text></Col>
-          <Col><Text>Recipe</Text></Col>
-          <Col><Text>Calories</Text></Col>
-          <Col><Text># of Ingr.</Text></Col>
-        </Grid>
+        <Text preset="header" style={TITLE} text="Meal Suggestions" />
         <Grid>
           {isLoading ? (<ActivityIndicator />) :
             (
@@ -117,7 +119,7 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
                   console.tron.log(data)
                   return (
                     <Row
-                      style={CONTINUE}
+                      style={CONTINUE_BORDER}
                       key={datas.recipe.shareAs} // you need a unique key per item
                       onPress={() => {
                         Linking.canOpenURL(datas.recipe.url).then(supported => {

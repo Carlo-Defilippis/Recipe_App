@@ -43,9 +43,10 @@ If you have any questions about this repository, please feel free to reach out t
 ## CONTRIBUTIONS
 If you would like to suggest features or changes, please fork this repo and open a pull request with comments on what you are suggesting. Thanks! 
 
-### Team:  
+### Team: 
+[Carlo Defilippis](https://github.com/Carlo-Defilippis)   
 [Kristen Van Neste](https://github.com/kmvanneste)  
-[Carlo Defilippis](https://github.com/Carlo-Defilippis)  
+
 
 ## LINKS
 

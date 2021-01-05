@@ -20,7 +20,7 @@ const FULL: ViewStyle = {
 const CONTAINER: ViewStyle = {
   backgroundColor: color.transparent,
   paddingHorizontal: spacing[4],
-  paddingBottom: spacing[10],
+  paddingVertical: spacing[10]
 }
 const TEXT: TextStyle = {
   color: color.palette.white,
@@ -37,7 +37,9 @@ const CONTINUE_BORDER: ViewStyle = {
   paddingHorizontal: spacing[4],
   backgroundColor: "#007FFF",
   borderColor: '#000000',
-  borderWidth: 1
+  borderWidth: 1,
+  borderRadius: 18,
+  marginBottom: 5
 }
 const CONTINUE_TEXT: TextStyle = {
   ...TEXT,

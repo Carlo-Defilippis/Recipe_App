@@ -23,7 +23,7 @@ const CONTAINER: ViewStyle = {
   paddingVertical: spacing[10]
 }
 const TEXT: TextStyle = {
-  color: color.palette.white,
+  color: color.palette.black,
   fontFamily: typography.primary,
 }
 const BOLD: TextStyle = { fontWeight: "bold" }

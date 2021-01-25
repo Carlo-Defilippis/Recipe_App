@@ -18,7 +18,7 @@ const CONTAINER: ViewStyle = {
   paddingHorizontal: spacing[4],
 }
 const TEXT: TextStyle = {
-  color: color.palette.white,
+  color: color.palette.black,
   fontFamily: typography.primary,
 }
 const BOLD: TextStyle = { fontWeight: "bold" }
@@ -53,7 +53,7 @@ const BOWSER: ImageStyle = {
 }
 const DIRECTIONS: TextStyle = {
   ...TEXT,
-  color: "#FFFFFF",
+  color: "black",
   fontSize: 16,
   lineHeight: 15,
   textAlign: "center",

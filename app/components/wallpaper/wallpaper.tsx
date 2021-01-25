@@ -3,7 +3,7 @@ import { Image } from "react-native"
 import { presets } from "./wallpaper.presets"
 import { WallpaperProps } from "./wallpaper.props"
 
-const defaultImage = require("./no-food-board.jpg")
+const defaultImage = require("./marble.jpg")
 
 /**
  * For your text displaying needs.

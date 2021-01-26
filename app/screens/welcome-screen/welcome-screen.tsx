@@ -9,8 +9,13 @@ import { generate } from 'shortid';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from "react-native-vector-icons/FontAwesome"
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import * as Sentry from "@sentry/react-native";
 const ccLogo = require('./ccLogo50.png')
 
+Sentry.init({
+  dsn: 'https://db7a54983de94763b8cb4693b3061c86@o511424.ingest.sentry.io/5608614',
+  enableAutoSessionTracking: true,
+});
 
 const FULL: ViewStyle = { flex: 1 }
 const CONTAINER: ViewStyle = {

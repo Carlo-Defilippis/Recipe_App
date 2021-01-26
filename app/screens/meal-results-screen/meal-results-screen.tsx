@@ -10,7 +10,12 @@ import { ActivityIndicator, Avatar, DataTable } from 'react-native-paper'
 import { Api } from "../../services/api"
 import MyAppBar from "../../components/appbar/appbar"
 import { Col, Row, Grid } from "react-native-easy-grid";
+import * as Sentry from "@sentry/react-native";
 
+Sentry.init({
+  dsn: 'https://db7a54983de94763b8cb4693b3061c86@o511424.ingest.sentry.io/5608614',
+  enableAutoSessionTracking: true,
+});
 
 const FULL: ViewStyle = {
   flexGrow: 1,

@@ -10,7 +10,6 @@ import { ActivityIndicator, Avatar, DataTable } from 'react-native-paper'
 import { Api } from "../../services/api"
 import MyAppBar from "../../components/appbar/appbar"
 import { Col, Row, Grid } from "react-native-easy-grid";
-import { black } from "react-native-paper/lib/typescript/src/styles/colors"
 
 
 const FULL: ViewStyle = {

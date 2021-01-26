@@ -155,7 +155,7 @@ export const WelcomeScreen = observer(function WelcomeScreen() {
 
 function removeElement(eraseId) {
   const items = searches.filter(item => item.id !== eraseId)
-  console.tron.log('INSIDE DELETE FUNCTION ',items)
+  // console.tron.log('INSIDE DELETE FUNCTION ',items)
   setSearches(items)
 };
 
@@ -260,14 +260,14 @@ function removeElement(eraseId) {
           <View style={PILLS}>
             {searches.map(s => {
               if (s.id != "" || s.searchTerm != "") {
-                console.tron.log('log in searches map function ', s, s.searchTerm, searches)
+                // console.tron.log('log in searches map function ', s, s.searchTerm, searches)
                 return (
                   <Button 
                     key={s.id} 
                     style={PILL_BUTTON}
                     onPress={() => {
                       removeElement(s.id)
-                      console.tron.log('button pressed with id ' + s.id + ' And query of ' + s.searchTerm)
+                      // console.tron.log('button pressed with id ' + s.id + ' And query of ' + s.searchTerm)
                     }}
                     >
                       <Icon 

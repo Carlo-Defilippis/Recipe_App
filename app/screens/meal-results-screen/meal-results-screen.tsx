@@ -110,7 +110,7 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
       .finally(() => setLoading(false)) // change loading state
   }, [])
 
-  console.tron.log("Logging the data ", finalURL(), data);
+  // console.tron.log("Logging the data ", finalURL(), data);
 
   return (
     <View style={FULL}>
@@ -122,7 +122,7 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
             (
               data.map(datas => {
                 if (data.length != null) {
-                  console.tron.log(data)
+                  // console.tron.log(data)
                   return (
                     <Row
                       style={CONTINUE_BORDER}
@@ -166,7 +166,7 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
                     </Row>
                   )
                 } else {
-                  console.tron.log(data)
+                  // console.tron.log(data)
                   return Alert.alert("Shoot, no recipes found!", "Try removing some items from the list and trying again")
                 }
               }))

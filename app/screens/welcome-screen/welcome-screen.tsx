@@ -129,7 +129,9 @@ const PILLS: ViewStyle = {
   marginRight: 1
 }
 const CENTER: TextStyle = {
-  textAlign: 'center'
+  textAlign: 'center',
+  flex: 1,
+  width: "100%"
 }
 
 interface Search {

@@ -6,7 +6,7 @@ const APP_ID = '322838b8';
 const APP_KEY = '3dae99e916ff3c75084db6caa2856c83';
 const chicken = 'XXXXXXoXXXXXX'
 
-const API_URL = "https://api.edamam.com/search?q=" + chicken + "&app_id=" + APP_ID + "&app_key=" + APP_KEY + "&from=0&to=10&calories=591-722&health=alcohol-free"
+const API_URL = "https://api.edamam.com/search?q=" + chicken + "&app_id=" + APP_ID + "&app_key=" + APP_KEY + "&from=0&to=10&calories=591-722"
 /**
  * The options used to configure the API.
  */

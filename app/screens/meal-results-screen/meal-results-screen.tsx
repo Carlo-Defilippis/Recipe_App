@@ -95,10 +95,14 @@ export const MealResultsScreen = observer(function MealResultsScreen() {
   const [page, setPage] = React.useState(0);
   let firstURLnoParams = mealResultsAPI.config.url
   const userSearchTerms = MealResultsScreen.arguments[0].route.params.myResult
+  const healthOptions = MealResultsScreen.arguments[0].route.params.health[0].healthTerm.map(function(val, index) {
+      return index === 0 ? '&health=' + val : '&' + val;
+  }).join('')
 
   const finalURL = () => {
     let firstOptionWords = firstURLnoParams.replace('XXXXXXoXXXXXX', userSearchTerms)
-    return firstOptionWords
+    let healthOptionJoin = firstOptionWords + healthOptions
+    return healthOptionJoin
   }
 
 

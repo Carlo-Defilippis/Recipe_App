@@ -224,20 +224,20 @@ function removeElement(eraseId) {
         </Text>
         <DropDownPicker
             items={[
-              { label: 'Vegan', value: 'YYveganYY', icon: () => <MaterialCommunityIcons name="egg-off" size={20} /> },
-              { label: 'Vegetarian', value: 'YYvegetarianYY', icon: () => <MaterialCommunityIcons name="carrot" size={20}/> },
-              { label: 'Paleo', value: 'YYPaleoYY', icon: () => <MaterialCommunityIcons name="food-steak" size={20}/> },
-              { label: 'Dairy-Free', value: 'YYdairy-freeYY', icon: () => <MaterialCommunityIcons name="cow" size={20}/> },
-              { label: 'Gluten-Free', value: 'YYgluten-freeYY', icon: () => <MaterialCommunityIcons name="barley-off" size={20}/> },
-              { label: 'Wheat-Free', value: 'YYwheat-freeYY', icon: () => <MaterialCommunityIcons name="barley-off" size={20}/> },
-              { label: 'Fat-Free', value: 'YYfat-freeYY', icon: () => <MaterialCommunityIcons name="food-off" size={20}/> },
-              { label: 'Low-Sugar', value: 'YYlow-sugarYY', icon: () => <MaterialCommunityIcons name="spoon-sugar" size={20}/> },
-              { label: 'Egg-Free', value: 'YYegg-freeYY', icon: () => <MaterialCommunityIcons name="egg-off" size={20}/> },
-              { label: 'Peanut-Free', value: 'YYPeanut-FreeYY', icon: () => <MaterialCommunityIcons name="peanut-off-outline" size={20}/> },
-              { label: 'Tree-Nut-Free', value: 'YYtree-nut-freeYY', icon: () => <MaterialCommunityIcons name="peanut-off" size={20}/> },
-              { label: 'Soy-Free', value: 'YYsoy-freeYY', icon: () => <MaterialCommunityIcons name="soy-sauce-off" size={20}/> },
-              { label: 'Fish-Free', value: 'YYfish-freeYY', icon: () => <MaterialCommunityIcons name="fish-off" size={20}/> },
-              { label: 'Shell-Fish-Free', value: 'YYshell-fish-freeYY', icon: () => <MaterialCommunityIcons name="fruit-citrus-off" size={20}/> },
+              { label: 'Vegan', value: 'vegan', icon: () => <MaterialCommunityIcons name="egg-off" size={20} /> },
+              { label: 'Vegetarian', value: 'vegetarian', icon: () => <MaterialCommunityIcons name="carrot" size={20}/> },
+              { label: 'Paleo', value: 'paleo', icon: () => <MaterialCommunityIcons name="food-steak" size={20}/> },
+              { label: 'Dairy-Free', value: 'dairy-free', icon: () => <MaterialCommunityIcons name="cow" size={20}/> },
+              { label: 'Gluten-Free', value: 'gluten-free', icon: () => <MaterialCommunityIcons name="barley-off" size={20}/> },
+              { label: 'Wheat-Free', value: 'wheat-free', icon: () => <MaterialCommunityIcons name="barley-off" size={20}/> },
+              { label: 'Fat-Free', value: 'fat-free', icon: () => <MaterialCommunityIcons name="food-off" size={20}/> },
+              { label: 'Low-Sugar', value: 'low-sugar', icon: () => <MaterialCommunityIcons name="spoon-sugar" size={20}/> },
+              { label: 'Egg-Free', value: 'egg-free', icon: () => <MaterialCommunityIcons name="egg-off" size={20}/> },
+              { label: 'Peanut-Free', value: 'peanut-Free', icon: () => <MaterialCommunityIcons name="peanut-off-outline" size={20}/> },
+              { label: 'Tree-Nut-Free', value: 'tree-nut-free', icon: () => <MaterialCommunityIcons name="peanut-off" size={20}/> },
+              { label: 'Soy-Free', value: 'soy-free', icon: () => <MaterialCommunityIcons name="soy-sauce-off" size={20}/> },
+              { label: 'Fish-Free', value: 'fish-free', icon: () => <MaterialCommunityIcons name="fish-off" size={20}/> },
+              { label: 'Shell-Fish-Free', value: 'shell-fish-free', icon: () => <MaterialCommunityIcons name="fruit-citrus-off" size={20}/> },
             ]}
             defaultValue={''}
             multiple={true}
@@ -301,7 +301,7 @@ function removeElement(eraseId) {
                 myResult = mySearchArray.join('').toString().replace(/^\++|\++$/gm, '').trim()
               })
               if (myResult.length != 0) {
-                const nextScreen = () => navigation.navigate('mealResult', { myResult })
+                const nextScreen = () => navigation.navigate('mealResult', { myResult, health })
                 return nextScreen()
               } else {
                 Alert.alert("Oh no!", "You have to enter some foods before searching!")
